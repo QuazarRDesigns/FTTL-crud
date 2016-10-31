@@ -13,5 +13,5 @@ $dao = new UserDao();
 
 // data for template
 $title = 'Users';
-$sql = 'SELECT * FROM user WHERE status != "deleted"';
+$sql = 'SELECT * FROM users WHERE status != "deleted"';
 $users = $dao->find($sql);
