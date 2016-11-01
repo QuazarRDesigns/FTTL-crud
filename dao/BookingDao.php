@@ -26,21 +26,21 @@ class BookingDao {
         return $result;
     }
     /**
-     * Find {@link Booking} by identifier.
-     * @return Booking Booking or <i>null</i> if not found
+     * Find {@link Todo} by identifier.
+     * @return Todo Todo or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT * FROM bookings WHERE status != "deleted" AND id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT * FROM bookings WHERE status != "deleted" and id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
-        $booking = new Booking;
+        $booking = new Booking();
         BookingMapper::map($booking, $row);
         return $booking;
     }
     /**
      * Save {@link Booking}.
-     * @param ToDo $booking {@link Booking} to be saved
+     * @param Booking $booking {@link Booking} to be saved
      * @return Booking saved {@link Booking} instance
      */
     public function save(Booking $booking) {
@@ -82,18 +82,18 @@ class BookingDao {
         }
         return $this->db;
     }
-//    private function getFindSql(BookingSearchCriteria $search = null) {
+//    private function getFindSql(TodoSearchCriteria $search = null) {
 //        $sql = 'SELECT * FROM todo WHERE deleted = 0 ';
 //        $orderBy = ' priority, due_on';
 //        if ($search !== null) {
 //            if ($search->getStatus() !== null) {
 //                $sql .= 'AND status = ' . $this->getDb()->quote($search->getStatus());
 //                switch ($search->getStatus()) {
-//                    case Booking::STATUS_PENDING:
+//                    case Todo::STATUS_PENDING:
 //                        $orderBy = 'due_on, priority';
 //                        break;
-//                    case Booking::STATUS_DONE:
-//                    case Booking::STATUS_VOIDED:
+//                    case Todo::STATUS_DONE:
+//                    case Todo::STATUS_VOIDED:
 //                        $orderBy = 'due_on DESC, priority';
 //                        break;
 //                    default:
@@ -114,14 +114,14 @@ class BookingDao {
         $booking->setStatus('pending');
         $sql = '
             INSERT INTO bookings (id, flight_name, flight_date, status, user_id)
-                VALUES (:id :flight_name :flight_date :status :user_id)';
+                VALUES (:id, :flight_name, :flight_date, :status, :user_id)';
         return $this->execute($sql, $booking);
     }
     /**
-     * @return Booking
+     * @return Todo
      * @throws Exception
      */
-//    private function update(Booking $todo) {
+//    private function update(Todo $todo) {
 //        $todo->setLastModifiedOn(new DateTime());
 //        $sql = '
 //            UPDATE todo SET
@@ -158,7 +158,7 @@ class BookingDao {
             ':flight_name' => $booking->getFlightName(),
             ':flight_date' => self::formatDateTime($booking->getFlightDate()),
             ':status' => $booking->getStatus(),
-            ':user_id' => $booking->getUserId()  
+            ':user_id' => $booking->getUserId()
         );
         return $params;
     }

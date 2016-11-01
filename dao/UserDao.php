@@ -30,7 +30,7 @@ class UserDao {
      * @return Todo Todo or <i>null</i> if not found
      */
     public function findById($id) {
-        $row = $this->query('SELECT * FROM user WHERE status != "deleted" AND id = ' . (int) $id)->fetch();
+        $row = $this->query('SELECT * FROM users WHERE status != "deleted" AND id = ' . (int) $id)->fetch();
         if (!$row) {
             return null;
         }
@@ -56,7 +56,7 @@ class UserDao {
      */
     public function delete($id) {
         $sql = '
-            UPDATE user SET
+            UPDATE users SET
                 status = :status
             WHERE
                 id = :id';

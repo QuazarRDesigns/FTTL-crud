@@ -7,10 +7,10 @@ class UserMapper {
         if (array_key_exists('id', $properties)) {
             $user->setId($properties['id']);
         }
-        if (array_key_exists('firstName', $properties)) {
+        if (array_key_exists('first_name', $properties)) {
             $user->setFirstName($properties['first_name']);
         }
-        if (array_key_exists('lastName', $properties)) {
+        if (array_key_exists('last_name', $properties)) {
             $user->setLastName($properties['last_name']);
         }
         if (array_key_exists('username', $properties)) {

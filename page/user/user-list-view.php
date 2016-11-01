@@ -15,7 +15,7 @@
         <?php foreach ($users as $user): ?>
             <li>                
                 <h3><a href="<?= Utils::createLink('detail', 
-                        array('id' => $user->getId())) ?>"><?php echo Utils::escape($user->getFirstName()) . Utils::escape($user->getLastName());?></a></h3>                 
+                        array('id' => $user->getId())) ?>"><?php echo Utils::escape($user->getFirstName()) . ' ' . Utils::escape($user->getLastName());?></a></h3>                 
                 <p><span class="label">Username:</span> <?php 
                 echo Utils::escape($user->getUsername()); 
                 ?></p>

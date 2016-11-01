@@ -24,6 +24,5 @@
                 <p><a href="index.php?module=booking&page=delete&id=<?php echo $booking->getId()?>">Delete</a></p>
             </li>
         <?php endforeach; ?>
-        <p><a href="index.php?module=booking&page=add-edit&id=<?php echo $booking->getId()?>">Add/Edit</a></p>    
     </ul>
 <?php endif; ?>

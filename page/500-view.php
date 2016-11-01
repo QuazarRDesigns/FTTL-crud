@@ -40,7 +40,6 @@
  *
  * Portions Copyrighted 2011 Sun Microsystems, Inc.
  */
-
 ?>
 <h1>SERVER ERROR</h1>
 
