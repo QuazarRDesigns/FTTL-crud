@@ -82,10 +82,13 @@ function error_field($title, array $errors) {
         <div class="field">
             <label>Flight Name:</label>
             <select name="booking[flight_name]">
-                <option value="Helicopter Sightseeing">Helicopter Sightseeing</option>
-                <option value="Glider">Glider</option>
-                <option value="Tramping Excursion">Tramping Excursion</option>
-                <option value="Heliskiing">Heliskiing</option>
+            <?php foreach ($flightNames as $flightName): ?>
+                <option value="<?php echo $flightName; ?>"
+                        <?php if ($booking->getFlightName() === $flightName): ?>
+                            selected="selected"
+                        <?php endif; ?>
+                        ><?php echo $flightName; ?></option>
+            <?php endforeach; ?>
             </select>
 <!--            <input type="text" name="booking[flight_name]" value="<?php //echo Utils::escape($booking->getFlightName()); ?>"
                    class="text<?php //echo error_field('flight_name', $errors); ?>"/>-->
