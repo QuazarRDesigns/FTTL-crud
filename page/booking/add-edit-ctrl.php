@@ -50,6 +50,7 @@ $title = 'Add-Edit';
 $errors = array();
 $booking = null;
 $edit = array_key_exists('id', $_GET);
+$flightNames = ['Glider', 'Helicopter Sightseeing'];
 if ($edit) {
     $dao = new BookingDao();
     $booking = Utils::getObjByGetId($dao);
