@@ -48,8 +48,8 @@ class Booking {
         $this->dateCreated = $dateCreated;
     }
 
-    function setStatus() {
-        return $this->status;
+    function setStatus($status) {
+        $this->status = $status;
     }
     
     function setUserId($userId) {

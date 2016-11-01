@@ -45,6 +45,8 @@ $head_template = new HeadTemplate;
 $head_template->setTitle('Add-Edit');
 $head_template->setDescription('Add a todo!');
 
+$title = 'Add-Edit';
+
 $errors = array();
 $booking = null;
 $edit = array_key_exists('id', $_GET);

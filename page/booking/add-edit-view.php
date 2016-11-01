@@ -62,7 +62,7 @@ function error_field($title, array $errors) {
 
 <h1>
     <?php if ($edit): ?>
-        <?php echo Utils::escape($booking->getTitle()); ?>
+        <?php echo $title; ?>
     <?php else: ?>
         Add new Booking
     <?php endif; ?>
@@ -81,8 +81,14 @@ function error_field($title, array $errors) {
     <fieldset>
         <div class="field">
             <label>Flight Name:</label>
-            <input type="text" name="booking[flight_name]" value="<?php echo Utils::escape($booking->getFlightName()); ?>"
-                   class="text<?php echo error_field('flight_name', $errors); ?>"/>
+            <select name="booking[flight_name]">
+                <option value="Helicopter Sightseeing">Helicopter Sightseeing</option>
+                <option value="Glider">Glider</option>
+                <option value="Tramping Excursion">Tramping Excursion</option>
+                <option value="Heliskiing">Heliskiing</option>
+            </select>
+<!--            <input type="text" name="booking[flight_name]" value="<?php //echo Utils::escape($booking->getFlightName()); ?>"
+                   class="text<?php //echo error_field('flight_name', $errors); ?>"/>-->
         </div>
         <div class="field">
             <label>Date of Flight:</label>
