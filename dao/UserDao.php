@@ -114,7 +114,7 @@ class UserDao {
         $user->setStatus('pending');
         $sql = '
             INSERT INTO users (id, first_name, last_name, username, password, status)
-                VALUES (:id, :first_name, :last_name, :username, :assword, :status)';
+                VALUES (:id, :first_name, :last_name, :username, :password, :status)';
         return $this->execute($sql, $user);
     }
     /**
