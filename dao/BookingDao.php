@@ -26,8 +26,8 @@ class BookingDao {
         return $result;
     }
     /**
-     * Find {@link Todo} by identifier.
-     * @return Todo Todo or <i>null</i> if not found
+     * Find {@link Booking} by identifier.
+     * @return Booking Booking or <i>null</i> if not found
      */
     public function findById($id) {
         $row = $this->query('SELECT * FROM bookings WHERE status != "deleted" and id = ' . (int) $id)->fetch();
@@ -82,18 +82,18 @@ class BookingDao {
         }
         return $this->db;
     }
-//    private function getFindSql(TodoSearchCriteria $search = null) {
-//        $sql = 'SELECT * FROM todo WHERE deleted = 0 ';
+//    private function getFindSql(BookingSearchCriteria $search = null) {
+//        $sql = 'SELECT * FROM booking WHERE deleted = 0 ';
 //        $orderBy = ' priority, due_on';
 //        if ($search !== null) {
 //            if ($search->getStatus() !== null) {
 //                $sql .= 'AND status = ' . $this->getDb()->quote($search->getStatus());
 //                switch ($search->getStatus()) {
-//                    case Todo::STATUS_PENDING:
+//                    case Booking::STATUS_PENDING:
 //                        $orderBy = 'due_on, priority';
 //                        break;
-//                    case Todo::STATUS_DONE:
-//                    case Todo::STATUS_VOIDED:
+//                    case Booking::STATUS_DONE:
+//                    case Booking::STATUS_VOIDED:
 //                        $orderBy = 'due_on DESC, priority';
 //                        break;
 //                    default:
@@ -109,7 +109,7 @@ class BookingDao {
      * @throws Exception
      */
     private function insert(Booking $booking) {
-        $now = new DateTime();
+        //$now = new DateTime();
         $booking->setId(null);
         $booking->setStatus('pending');
         $sql = '
@@ -118,25 +118,20 @@ class BookingDao {
         return $this->execute($sql, $booking);
     }
     /**
-     * @return Todo
+     * @return Booking
      * @throws Exception
      */
-//    private function update(Todo $todo) {
-//        $todo->setLastModifiedOn(new DateTime());
-//        $sql = '
-//            UPDATE todo SET
-//                priority = :priority,
-//                last_modified_on = :last_modified_on,
-//                due_on = :due_on,
-//                title = :title,
-//                description = :description,
-//                comment = :comment,
-//                status = :status,
-//                deleted = :deleted
-//            WHERE
-//                id = :id';
-//        return $this->execute($sql, $todo);
-//    }
+    private function update(Booking $booking) {
+        $sql = '
+            UPDATE bookings SET
+                flight_name = :flight_name,
+                flight_date = :flight_date,
+                status = :status,
+                user_id = :user_id
+            WHERE
+                id = :id';
+        return $this->execute($sql, $booking);
+    }
     /**
      * @return Booking
      * @throws Exception
@@ -178,7 +173,7 @@ class BookingDao {
         return $statement;
     }
     private static function throwDbError(array $errorInfo) {
-        // TODO log error, send email, etc.
+        // Booking log error, send email, etc.
         throw new Exception('DB error [' . $errorInfo[0] . ', ' . $errorInfo[1] . ']: ' . $errorInfo[2]);
     }
     private static function formatDateTime(DateTime $date) {

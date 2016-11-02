@@ -57,14 +57,14 @@ function error_field($title, array $errors) {
     return '';
 }
 
-/* @var $booking Booking */
+/* @var $user Booking */
 ?>
 
 <h1>
     <?php if ($edit): ?>
-        Edit Booking
+        Edit User
     <?php else: ?>
-        Add New Booking
+        Add New User
     <?php endif; ?>
 </h1>
 
@@ -80,23 +80,29 @@ function error_field($title, array $errors) {
 <form action="#" method="post">
     <fieldset>
         <div class="field">
-            <label>Flight Name:</label>
-            <select name="booking[flight_name]">
-            <?php foreach ($flightNames as $flightName): ?>
-                <option value="<?php echo $flightName; ?>"
-                        <?php if ($booking->getFlightName() === $flightName): ?>
-                            selected="selected"
-                        <?php endif; ?>
-                        ><?php echo $flightName; ?></option>
-            <?php endforeach; ?>
-            </select>
-<!--            <input type="text" name="booking[flight_name]" value="<?php //echo Utils::escape($booking->getFlightName()); ?>"
-                   class="text<?php //echo error_field('flight_name', $errors); ?>"/>-->
+            <label>First Name:</label>
+            
+            <input type="text" name="user[first_name]" value="<?php echo Utils::escape($user->getFirstName()); ?>"
+                   class="text<?php echo error_field('first_name', $errors); ?>"/>
+        </div>
+       <div class="field">
+            <label>Last Name:</label>
+            
+            <input type="text" name="user[last_name]" value="<?php echo Utils::escape($user->getLastName()); ?>"
+                   class="text<?php echo error_field('last_name', $errors); ?>"/>
         </div>
         <div class="field">
-            <label>Date of Flight:</label>
-            <input type="text" name="booking[flight_date]" value="<?php echo Utils::escape($booking->getFlightDate()->format('Y-n-j')); ?>"
-                   class="text datepicker<?php echo error_field('flight_date', $errors); ?>" </div>           
+            <label>Username:</label>
+            
+            <input type="text" name="user[username]" value="<?php echo Utils::escape($user->getUsername()); ?>"
+                   class="text<?php echo error_field('username', $errors); ?>"/>
+        </div>
+        <div class="field">
+            <label>Password:</label>
+            
+            <input type="password" name="user[password]" value="<?php echo Utils::escape($user->getPassword()); ?>"
+                   class="text<?php echo error_field('password', $errors); ?>"/>
+        </div>
         <div class="wrapper">
 <!--            <input type="submit" name="cancel" value="CANCEL" class="submit" />-->
             <input type="submit" name="save" value="<?php echo $edit ? 'EDIT' : 'ADD'; ?>" class="submit" />

@@ -43,49 +43,50 @@
 
 $head_template = new HeadTemplate;
 $head_template->setTitle('Add-Edit');
-$head_template->setDescription('Add a todo!');
+$head_template->setDescription('Add a User');
 
 $errors = array();
-$booking = null;
+$user = null;
 $edit = array_key_exists('id', $_GET);
-$flightNames = ['Glider', 'Scenic Helicopter', 'Heliskiing'];
 if ($edit) {
-    $dao = new BookingDao();
-    $booking = Utils::getObjByGetId($dao);
+    $dao = new UserDao();
+    $user = Utils::getObjByGetId($dao);
 } else {
     // set defaults
-    $booking = new Booking();
-    $booking->getFlightName();
-    $flightDate = new DateTime("+1 day");
-    $flightDate->setTime(0, 0, 0);
-    $booking->setFlightDate($flightDate);
-    $booking->setStatus('pending');
+    $user = new User();
+    $user->getFirstName();
+    $user->getLastName();
+    $user->getUsername();
+    $user->getPassword();
+    $user->setStatus('pending');
     $userId = 1; 
-    $booking->setUserId($userId);
+    $user->setUserId($userId);
 }
 
 //if (array_key_exists('cancel', $_POST)) {
 //    // redirect
-//    Utils::redirect('detail', array('id' => $booking->getId()));
+//    Utils::redirect('detail', array('id' => $user->getId()));
 //}
 if (array_key_exists('save', $_POST)) {
     // for security reasons, do not map the whole $_POST['todo']
     $data = array(
-        'flight_name' => $_POST['booking']['flight_name'],
-        'flight_date' => $_POST['booking']['flight_date']
+        'first_name' => $_POST['user']['first_name'],
+        'last_name' => $_POST['user']['last_name'],
+        'username' => $_POST['user']['username'],
+        'password' => $_POST['user']['password']
     );
     
     // map
-    BookingMapper::map($booking, $data);
+    UserMapper::map($user, $data);
     // validate
-    //$errors = BookingValidator::validate($booking);
+    //$errors = UserValidator::validate($user);
     // validate
     if (empty($errors)) {
         // save
-        $dao = new BookingDao();
-        $booking = $dao->save($booking);
-        Flash::addFlash('Booking saved successfully.');
+        $dao = new UserDao();
+        $user = $dao->save($user);
+        Flash::addFlash('User saved successfully.');
         // redirect
-        Utils::redirect('booking-list', array('module' => 'booking'));
+        Utils::redirect('user-list', array('module' => 'user'));
     }
 }
