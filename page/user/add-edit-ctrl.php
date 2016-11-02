@@ -59,8 +59,6 @@ if ($edit) {
     $user->getUsername();
     $user->getPassword();
     $user->setStatus('pending');
-    $userId = 1; 
-    $user->setUserId($userId);
 }
 
 //if (array_key_exists('cancel', $_POST)) {
