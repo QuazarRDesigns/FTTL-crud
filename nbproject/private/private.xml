@@ -3,10 +3,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/XAMPP/htdocs/fttl-crud/page/booking/add-edit-ctrl.php</file>
-            <file>file:/C:/XAMPP/htdocs/fttl-crud/page/booking/add-edit-view.php</file>
             <file>file:/C:/XAMPP/htdocs/fttl-crud/dao/BookingDao.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/model/Booking.php</file>
             <file>file:/C:/XAMPP/htdocs/fttl-crud/dao/UserDao.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/mapping/BookingMapper.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/model/User.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/config/Config.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/mapping/UserMapper.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/layout/HeadTemplate.php</file>
+            <file>file:/C:/XAMPP/htdocs/fttl-crud/util/Utils.php</file>
         </group>
     </open-files>
 </project-private>

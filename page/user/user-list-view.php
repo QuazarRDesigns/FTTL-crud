@@ -22,7 +22,7 @@
                 <p><span class="label">Password:</span> <?php 
                 echo Utils::escape($user->getPassword()); 
                 ?></p> 
-                <p><a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a></p>
+                <p><a href="index.php?module=user&page=add-edit&id=<?php echo $user->getId()?>">Edit</a> | <a href="index.php?module=user&page=delete&id=<?php echo $user->getId()?>">Delete</a></p>
             </li>
         <?php endforeach; ?>
     </ul>

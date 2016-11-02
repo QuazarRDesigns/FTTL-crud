@@ -18,10 +18,10 @@
                 <h3><a href="<?= Utils::createLink('detail', 
                         array('id' => $booking->getId())) ?>"><?php 
                         echo Utils::escape($booking->getFlightName()); ?></a></h3>                
-                <p><span class="label">Created On:</span> <?php 
-                echo Utils::escape(Utils::formatDateTime($booking->getDateCreated())); 
+                <p><span class="label">Flight Date:</span> <?php 
+                echo Utils::escape(Utils::formatDateTime($booking->getFlightDate())); 
                 ?></p> 
-                <p><a href="index.php?module=booking&page=delete&id=<?php echo $booking->getId()?>">Delete</a></p>
+                <p><a href="index.php?module=booking&page=add-edit&id=<?php echo $booking->getId()?>">Edit</a> | <a href="index.php?module=booking&page=delete&id=<?php echo $booking->getId()?>">Delete</a></p>
             </li>
         <?php endforeach; ?>
     </ul>
