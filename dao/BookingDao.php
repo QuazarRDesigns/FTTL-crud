@@ -142,9 +142,9 @@ class BookingDao {
         if (!$booking->getId()) {
             return $this->findById($this->getDb()->lastInsertId());
         }
-        if (!$statement->rowCount()) {
-            throw new NotFoundException('Booking with ID "' . $booking->getId() . '" does not exist.');
-        }
+//        if (!$statement->rowCount()) {
+//            throw new NotFoundException('Booking with ID "' . $booking->getId() . '" does not exist.');
+//        }
         return $booking;
     }
     private function getParams(Booking $booking) {

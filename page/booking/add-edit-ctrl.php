@@ -72,7 +72,7 @@ if (array_key_exists('save', $_POST)) {
     // for security reasons, do not map the whole $_POST['todo']
     $data = array(
         'flight_name' => $_POST['booking']['flight_name'],
-        'flight_date' => $_POST['booking']['flight_date']
+        'flight_date' => $_POST['booking']['flight_date'] . ' 00:00:00'
     );
     
     // map
