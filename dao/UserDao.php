@@ -143,9 +143,9 @@ class UserDao {
         if (!$user->getId()) {
             return $this->findById($this->getDb()->lastInsertId());
         }
-        if (!$statement->rowCount()) {
-            throw new NotFoundException('User with ID "' . $user->getId() . '" does not exist.');
-        }
+//        if (!$statement->rowCount()) {
+//            throw new NotFoundException('User with ID "' . $user->getId() . '" does not exist.');
+//        }
         return $user;
     }
     private function getParams(User $user) {
