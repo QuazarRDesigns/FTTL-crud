@@ -54,6 +54,12 @@ function initDatepicker() {
         .datepicker({
             dateFormat: 'yy-m-d'
         });
+        
+        var flightDateEl = $('#flight_date');
+        flightDateEl.change(function () {
+            var val = flightDateEl.val();
+            flightDateEl.attr('value', val);
+        });
 }
 
 function initFlashes() {
