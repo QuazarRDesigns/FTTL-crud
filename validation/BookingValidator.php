@@ -42,43 +42,28 @@
  */
 
 /**
- * Validator for {@link Todo}.
- * @see TodoMapper
+ * Validator for {@link Booking}.
+ * @see BookingMapper
  */
-final class TodoValidator {
+final class BookingValidator {
 
     private function __construct() {
     }
 
     /**
-     * Validate the given {@link Todo} instance.
-     * @param Todo $todo {@link Todo} instance to be validated
+     * Validate the given {@link Booking} instance.
+     * @param Booking $booking {@link Booking} instance to be validated
      * @return array array of {@link Error} s
      */
-    public static function validate(Todo $todo) {
+    public static function validate(Booking $booking) {
         $errors = array();
-        if (!$todo->getCreatedOn()) {
-            $errors[] = new Error('createdOn', 'Empty or invalid Created On.');
+        if (!$booking->getFlightName()) {
+            $errors[] = new Error('flightName', 'Empty or invalid Flight Name.');
         }
-        if (!$todo->getLastModifiedOn()) {
-            $errors[] = new Error('lastModifiedOn', 'Empty or invalid Last Modified On.');
+        if (!$booking->getFlightDate()) {
+            $errors[] = new Error('flightDate', 'Empty or invalid Flight Date.');
         }
-        if (!trim($todo->getTitle())) {
-            $errors[] = new Error('title', 'Title cannot be empty.');
-        }
-        if (!$todo->getDueOn()) {
-            $errors[] = new Error('dueOn', 'Empty or invalid Due On.');
-        }
-        if (!trim($todo->getPriority())) {
-            $errors[] = new Error('priority', 'Priority cannot be empty.');
-        } elseif (!self::isValidPriority($todo->getPriority())) {
-            $errors[] = new Error('priority', 'Invalid Priority set.');
-        }
-        if (!trim($todo->getStatus())) {
-            $errors[] = new Error('status', 'Status cannot be empty.');
-        } elseif (!self::isValidStatus($todo->getStatus())) {
-            $errors[] = new Error('status', 'Invalid Status set.');
-        }
+        
         return $errors;
     }
 
@@ -105,11 +90,11 @@ final class TodoValidator {
     }
 
     private static function isValidStatus($status) {
-        return in_array($status, Todo::allStatuses());
+        return in_array($status, Booking::allStatuses());
     }
 
     private static function isValidPriority($priority) {
-        return in_array($priority, Todo::allPriorities());
+        return in_array($priority, Booking::allPriorities());
     }
 
 }

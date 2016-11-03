@@ -78,7 +78,7 @@ if (array_key_exists('save', $_POST)) {
     // map
     BookingMapper::map($booking, $data);
     // validate
-    //$errors = BookingValidator::validate($booking);
+    $errors = BookingValidator::validate($booking);
     // validate
     if (empty($errors)) {
         // save
